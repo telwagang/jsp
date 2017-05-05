@@ -1,0 +1,52 @@
+<div class="row upperspace" ng-controller="MainController">
+	<div class="col-xs-6 col-md-2">
+		<div class="pull-div-left">
+			<a href="#/cashrequest" class="btn btn-success"> Make a new project </a>
+		</div><br/>
+	<div class="pull-div-left"> <a href="#/status/no" class="btn btn-warning"> Not Approved Cash Request </a>
+</div><br/>
+<!--<div class="pull-div-left"><a href="#" class="btn btn-danger">Close a Project</a>
+</div>-->
+</div>
+<div class="col-xs-12 col-md-10">
+	<div class="panel panel-default pull-div-right">
+		<div class="panel-heading">
+			<h3 class="panel-title">Approved Purchase Order </h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-striped table-hover">
+				<thead>
+
+					<tr>
+						<th>Name</th>
+						<th>Tittle</th>
+						<th>Purpose Of Payment</th>
+						<th>Budget</th>
+						<th>By</th>
+						<th>Date</th>
+						<th>Status</th>
+						<th>Progress</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="cr in cashrequest | statusapprove ">
+						<td><small>{{cr.name}}<small></td>
+                            <td><small>{{cr.tittle}}</small></td>
+						<td><small>{{cr.purpose}}</small></td>
+						<td><small>{{cr.budget}}</small></td>
+						<td><small>{{cr.by}}</small></td>
+						<td> <small>{{cr.date | date:'dd-MM-yyyy' }} <small></td>
+                            <td><small>{{cr.status}}</small></td>
+						<td><small>{{cr.progress}}</small></td>
+						<td>
+
+							<a ng-show="cr.status == 'approved'" class="btn btn-sm btn-default" ng-href="#/addparticulars/{{cr.$id}}" role="button">Add particular</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>

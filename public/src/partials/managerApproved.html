@@ -1,0 +1,82 @@
+ 
+ 
+<div ng-controller="projectController">
+    <div class="row overview">
+   <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Parchase Order List</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                
+                                <th>Name</th>
+                                <th>Tittle</th>
+                                <th>Purpose Of Payment</th>
+                                <th>By</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Progress</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cr in cashrequest | statusapprove">
+                                <td>{{cr.name}}</td>
+                                <td>{{cr.tittle}}</td>
+                                <td>{{cr.purpose}}</td>
+                                <td>{{cr.by}}</td>
+                                <td>{{cr.date | date:'dd-MM-yyyy' }}</td>
+                                <td>{{cr.status}}</td>
+                                <td>{{cr.progress}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-info"  role="button" ng-click="viewParticulars(cr.$id)">View Particular</a> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+   <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">List of Particulars.</h3>
+                </div>
+                
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quanity</th>
+                            <th>Unit Cost</th>
+                            <th>Days</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>By</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pl in particularlist">
+                            <td>{{pl.name}}</td>
+                            <td>{{pl.quanity}}</td>
+                            <td>{{pl.unitcost}}</td>
+                            <td>{{pl.days}}</td>
+                            <td>{{pl.amount}}</td>
+                            <td>{{pl.date | date:'dd-MM-yyyy' }}</td>
+                            <td>{{pl.by}}</td>
+                            <td>
+                                <a target="_self" class="btn btn-sm btn-info"    href="{{pl.file}}" download="{{pl.name}}" role="button">donwload</a> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

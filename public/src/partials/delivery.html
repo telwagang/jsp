@@ -1,0 +1,20 @@
+<div ng-controller="DeliveryController">
+<form>
+    <div>
+        <input type="text" ng-model="delivery.name" class="" placeholder="Name"/>  
+    </div>
+    <div>
+        <input type="number" ng-model="delivery.quanity" class="" placeholder="Quanity"/>
+    </div>
+    <div>
+        <input type="text" ng-model="delivery.description" class="" placeholder="Description" />
+    </div>
+    <div>
+        <input type="date" ng-model="delivery.date" class="" placeholder="Date" />
+    </div>
+    <div>
+        <button type="submit" value="Send Request" ng-click="addDelivery(delivery)" />
+        <button type="reset" value="cancel" ng-click="removeDelivery(delivery)"/>
+    </div>
+</form>
+</div>

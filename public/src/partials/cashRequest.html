@@ -1,0 +1,72 @@
+<div ng-controller="CRController">
+    <div class="row">
+        <form class="col-xs-6 col-md-3">
+            <div class="panel panel-default pull-div-left">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New Cash Request</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <p>{{error.message}}</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="CS.name" class="form-control" placeholder="Project Name" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="CS.tittle" class="form-control" placeholder="Project Title" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="CS.purpose" class="form-control" placeholder="Purpose of payment" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="CS.budget" class="form-control" placeholder="Budget" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" ng-model="CS.date" class="form-control" placeholder="Date" required/>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="Send Request" ng-click="addCashRequest(CS)" class="btn btn-success">Submit</button>
+                        <button type="reset" value="cancel" ng-click="removeCashRequest(CS)" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-xs-12  col-md-9">
+            <div class="panel panel-default pull-div-right">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Cash Request List</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Tittle</th>
+                                <th>Purpose Of Payment</th>
+                                <th>Budget</th>
+                                <th>By</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cr in cashrequest | statuspending">
+                                <td>{{cr.name}}</td>
+                                <td>{{cr.tittle}}</td>
+                                <td>{{cr.purpose}}</td><td>{{cr.budget}}</td>
+                                <td>{{cr.by}}</td>
+                                <td>{{cr.date | date:'medium' }}</td>
+                                <td>{{cr.status}}</td>
+                                <td >
+                                   
+                                    <a class="btn btn-sm btn-info" href="#" role="button">Edit</a> |
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

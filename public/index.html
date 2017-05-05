@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jspApp">
+
+<head>
+    <title>Jsp Project Software</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="src/stylesheet/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link rel='stylesheet' type='text/css' href='src/stylesheet/index.css' />
+      <script src="_deps.js"></script>
+    <!-- 
+    <script src="src"
+    -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
+    <script src="src/libs/underscore-min.js">
+</script>
+    <script>
+  var config = {
+    apiKey: "AIzaSyAg3HlECkN8Vc1PoiEr4uDPpbRE9wrIn4w",
+    authDomain: "jspapp-a43bf.firebaseapp.com",
+    databaseURL: "https://jspapp-a43bf.firebaseio.com",
+    storageBucket: "jspapp-a43bf.appspot.com",
+    messagingSenderId: "287110258845"
+  };
+  firebase.initializeApp(config);
+</script>
+
+    <script src="_app.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+                <a href="#/home" ng-hide="manageruser" class="navbar-brand logo">
+                    <img alt="brand" src="/src/images/logo_1.jpg" height="35px" width="90px">
+                </a>
+                <a href="#/manager/home" ng-show="manageruser" class="navbar-brand logo">
+                    <img alt="brand" src="/src/images/logo_1.jpg" height="35px" width="90px">
+                </a>
+            </div>
+            <div class="nav navbar-nav" ng-show="firebaseUser">
+                <small><p class="navbar-text">{{ firebaseUser.email }}</p></small>
+                <a class="btn btn-default btn-xs navbar-btn" ng-click="signOut()">Sign Out</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li role="presentation" ng-hide="manageruser"><a href="#/cashrequest" class="btn btn-button" ng-show="firebaseUser"><small>Process Requisition</small></a></li>
+                <li role="presentation" ng-show="manageruser"><a href="#/manager/projects"> Projects </a></li>
+
+                <li role="button" ng-hide="firebaseUser"><a href="#/" class="active">Sign in</a></li>
+            </ul>
+
+    </nav>
+    <ol class="container breadcrumb">
+        <li ng-repeat="crumb in breadcrumbs">
+            <small> <a ng-href="{{crumb.link}}" ng-class="{{crumb.style}}">{{crumb.name}}</a>
+     </small></li>
+
+    </ol>
+    <div class="container" ng-view>
+    </div>
+
+   
+ <!--<script src="src/libs/bootstrap.js">
+</script>-->
+</body>
+
+</html>

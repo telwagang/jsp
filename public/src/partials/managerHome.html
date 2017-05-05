@@ -1,0 +1,73 @@
+<div ng-controller="managerController">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-8 layout">
+			<div class="">
+				<div class="panel-heading">
+					<h4 class="panel-title">List To Approve</h4>
+				</div>
+				<div class="panel-body">
+					<div ng-repeat="cr in cashrequest | statuspending">
+						<div class="divider">
+							<div class="col-md-7 divider">
+								<div>
+									<ul class="list-inline">
+										<li>Name : <span>{{cr.name}}</span>
+										</li>
+										<li>Tittle : <span>{{cr.tittle}}</span>
+										</li>
+
+									</ul>
+								</div>
+
+								<div>
+									<ul class="list-inline">
+										<li><span>Purpose Of Payment : </span>{{cr.purpose}}</li>
+										<li> <span>Budget: </span> {{cr.budget}}</li>
+								</div>
+								<div class="">
+									<ul class="list-inline">
+										<li class="text-muted">By : <span>{{cr.by}}</span></li>
+										<li class="text-muted">Date : <span>{{cr.date | date:'dd-MM-yyyy' }}</span></li>
+										<li class="text-muted"> Timestamp : <span>{{cr.datasubmited | date:'medium' }}</span></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-4 divider">
+								<button type="button" class="btn btn-large btn-block btn-success" ng-click="approve(cr.$id,cr.userid)">Approve</button>
+								<button type="button" class="btn btn-block btn-warning" ng-click="no(cr.$id,cr.userid)">No</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--	<div class="col-xs-6 col-md-4">
+			<table class="table table-responsive">
+				<thead>
+					<th>
+						Name
+					</th>
+						<th>
+							Started
+					</th>
+						<th>
+							Amount requested
+					</th>
+						<th>
+							Amount used
+					</th>
+						<th>
+							Amount left
+					</th>
+				</thead>
+				<tbody>
+					<td ng-repeat="ct in ">
+					</td>
+					
+				</tbody>
+			</table>
+
+	</div > -->
+
+	</div>
+</div>
